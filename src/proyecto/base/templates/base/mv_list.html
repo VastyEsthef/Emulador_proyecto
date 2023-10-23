@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Document_holi</title>
+</head>
+<body>
+   {% if request.user.is_authenticated %}
+
+      <p>{{request.user}}</p>
+      <a href="{% url 'logout' %}">Salir</a>
+
+   {% else %}
+      <a href="{% url 'login' %}">Ingresar</a>
+   {% endif %}
+   <hr>
+   
+   <h1>lista de Mvs</h1>
+   <a href="{% url 'crear-mv' %}">Crear Mv</a>
+   <table>
+      <tr>
+         <th>Elementos</th>
+      </tr>
+
+      {% for mv in mvs %}
+
+      <tr>
+         <td>{{mv.nombre}}</td>
+         <td>
+            <a href="{% url 'eliminar-mv' mv.id %}">Eliminar</a>
+         </td>
+      </tr>
+      {% empty %}
+      <h3>No hay Elementos en esta lista</h3>
+      
+      {% endfor %}
+
+   </table>
+</body>
+</html>
+
+
+

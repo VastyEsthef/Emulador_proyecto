@@ -1,0 +1,9 @@
+<h1>Eliminar Maquinas Virtuales</h1>
+
+<a href="{% url 'mvs' %}">Volver</a>
+
+<form method="POST">
+   {% csrf_token %}
+   <p>Desea Eliminar esta Maquina virtual?: {{mv}}</p>
+   <input type="submit" value = 'Eliminar'>
+</form>
