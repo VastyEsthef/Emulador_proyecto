@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+   <!-- Configuración común, como enlaces a CSS y JS -->
+   <title>Tu Aplicación</title>
+</head>
+
+<body>
+   <!-- Encabezado común -->
+   <header>
+      <nav class="navbar navbar-expand-lg navbar-light bg-light">
+         <a class="navbar-brand" href="#">Tu Aplicación</a>
+         <!-- Menú de navegación común -->
+         <ul class="navbar-nav">
+            <li class="nav-item">
+               <a class="nav-link" href="/">Inicio</a>
+            </li>
+            <li class="nav-item">
+               <a class="nav-link" href="/otra_pagina/">Otra Página</a>
+            </li>
+            <!-- Agrega más enlaces de navegación según tus necesidades -->
+         </ul>
+      </nav>
+   </header>
+
+   <!-- Contenido específico de la página -->
+   <div class="container">
+      {% block content %}{% endblock %}
+   </div>
+
+   <!-- Pie de página común -->
+   <footer>
+      <p>&copy; {{ year }} Tu Aplicación</p>
+   </footer>
+</body>
+
+</html>
