@@ -1,6 +1,26 @@
 from django.db import models
 from django.contrib.auth.models import User
 
+class Ctopology(models.Model):
+   id = models.AutoField(primary_key=True)
+   user = models.ForeignKey(User, 
+                               on_delete=models.CASCADE,
+                               null=True, 
+                               blank=True)
+
+   name = models.CharField(max_length=100)
+   
+   description = models.TextField(null=True, 
+                               blank=True)
+   
+   created = models.DateTimeField(auto_now_add=True)
+
+   status = models.BooleanField(default=False)
+   
+   def __str__(self):
+      return self.name
+
+
 class Cmaquinas_virtuales(models.Model):
    usuario = models.ForeignKey(User, 
                                on_delete=models.CASCADE,
@@ -25,3 +45,26 @@ class Cmaquinas_virtuales(models.Model):
    def __str__(self):
       return self.nombre
    
+   
+class Cvirtual_machine(models.Model):
+      id = models.AutoField(primary_key=True)
+      user = models.ForeignKey(User, 
+                               on_delete=models.CASCADE,
+                               null=True, 
+                               blank=True)
+
+      name = models.CharField(max_length=100)
+      
+      image = models.CharField(max_length=100)
+      
+      flavor = models.CharField(max_length=200)
+   
+      description = models.TextField(null=True, 
+                               blank=True)
+   
+      created = models.DateTimeField(auto_now_add=True)
+
+      status = models.BooleanField(default=False)
+   
+      def __str__(self):
+         return self.name
