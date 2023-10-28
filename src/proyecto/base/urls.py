@@ -5,6 +5,9 @@ from .views import list_topologies, create_topology, detail_topology
 from .views import list_vms, create_vm
 
 urlpatterns = [
+   #--------------- Landing Page ---------------
+   
+   
    #-------------- Login / Registro ---------------
    path('login/', logueo.as_view(), name='login'),
    path('logout/', LogoutView.as_view(next_page = 'login'), name='logout'),
@@ -25,6 +28,8 @@ urlpatterns = [
    path('listar-mv/',lista_mvs.as_view(), name='mvs'),
    path('crear-mv/', crear_mv.as_view(), name='crear-mv'),
    path('eliminar-mv/<int:pk>', eliminar_mv.as_view(), name='eliminar-mv'),
+   
+   
    
    
 ]
