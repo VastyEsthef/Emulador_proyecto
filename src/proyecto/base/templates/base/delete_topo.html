@@ -1,0 +1,40 @@
+{% extends 'base/base.html' %}
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Document</title>
+</head>
+<body>
+   {% block content %}
+
+   <a href="{% url 'topologies' %}">Volver</a>
+   <section class="section">
+      <div class="row">
+         <div class="col-lg-12">
+
+            <div class="card">
+               <div class="card-body">
+                  <h5 class="card-title">Eliminar Maquinas Virtuales</h5>
+
+                  <form method="POST">
+                     {% csrf_token %}
+                     <p>Desea Eliminar esta Topología?: {{topology}}</p>
+                     <input type="submit" value = 'Eliminar'>
+                  </form>
+               </div>
+            </div>
+         </div>
+      </div>
+   </section>
+
+   {% endblock content %}
+</body>
+</html>
+
+
+
+

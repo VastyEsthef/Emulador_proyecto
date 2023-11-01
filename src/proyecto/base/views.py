@@ -8,6 +8,13 @@ from django.contrib.auth.views import LoginView, LogoutView
 from django.urls import reverse_lazy
 from .models import Ctopology, Cmaquinas_virtuales, Cvirtual_machine
 
+#--------------------- Landing Page ----------------------
+
+def landing_page(request):
+   return render(request, 'base/landing_page.html')
+   
+
+
 #--------------------- Login / Registro ----------------------
 
 class logueo(LoginView):
@@ -15,8 +22,8 @@ class logueo(LoginView):
    fields = '__all__'
    redirect_authenticated_user = True
 
-   def get_success_url(self):
-      return reverse_lazy('mvs')
+   #def get_success_url(self):
+      #   return reverse_lazy('topologies')
 
 
 class registro(FormView):
@@ -45,7 +52,7 @@ class registro(FormView):
 class list_topologies(ListView):
    model = Ctopology
    context_object_name = 'topologies'
-   template_name = 'base/topo_list.html'
+   template_name = 'base/list_topo.html'
 
    #Nuevo
    def get_queryset(self):
@@ -54,7 +61,7 @@ class list_topologies(ListView):
 
 class create_topology(CreateView):
    model = Ctopology
-   template_name = 'base/topo_form.html'
+   template_name = 'base/create_topo.html'
    fields = '__all__'
    success_url = reverse_lazy('topologies')
 
@@ -70,13 +77,19 @@ class detail_topology(DetailView):
    template_name = 'base/topo_detail.html'
 
 
+class delete_topology(DeleteView):
+   model = Ctopology
+   context_object_name = 'topology'
+   template_name = 'base/delete_topo.html'
+   success_url = reverse_lazy('topologies')
+
 #--------------------- VM ----------------------
 
 
 class list_vms(ListView):
    model = Cvirtual_machine
    context_object_name = 'vms'
-   template_name = 'base/vm_list.html'
+   template_name = 'base/list_vm.html'
 
    #Nuevo
    def get_queryset(self):
@@ -85,7 +98,7 @@ class list_vms(ListView):
 
 class create_vm(CreateView):
    model = Cvirtual_machine
-   template_name = 'base/vm_form.html'
+   template_name = 'base/create_vm.html'
    fields = '__all__'
    success_url = reverse_lazy('vms')
 
@@ -93,6 +106,13 @@ class create_vm(CreateView):
    def form_valid(self, form):
         form.instance.save()
         return redirect('vms')
+
+
+class link_vm(CreateView):
+   model = Cvirtual_machine
+   template_name = 'base/link_vm.html'
+   fields = ('name',)
+   success_url = reverse_lazy('vms')
 
 
 #--------------------- MVs OLD - español----------------------

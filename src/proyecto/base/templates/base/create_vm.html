@@ -1,0 +1,91 @@
+{% extends 'base/base.html' %}
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Document</title>
+</head>
+
+<body>
+
+   {% block content %}
+
+   <section class="section">
+      <div class="row">
+         <div class="col-lg-12">
+
+            <div class="card">
+               <div class="card-body">
+                  <h5 class="card-title">Registrar Máquina Virtual</h5>
+
+                  <!-- General Form Elements -->
+                  <form>
+                     <div class="row mb-3">
+                        <label for="inputText" class="col-sm-2 col-form-label">Nombre</label>
+                        <div class="col-sm-10">
+                           <input id="inputText" type="text" class="form-control">
+                        </div>
+                     </div>
+                     
+                     <!--
+                     <div class="row mb-3">
+                        <label for="inputPassword" class="col-sm-2 col-form-label">Textarea</label>
+                        <div class="col-sm-10">
+                           <textarea class="form-control" style="height: 100px"></textarea>
+                        </div>
+                     </div>
+                     
+
+                     <div class="row mb-3">
+                        <label class="col-sm-2 col-form-label">Disabled</label>
+                        <div class="col-sm-10">
+                           <input type="text" class="form-control" value="Read only / Disabled" disabled="">
+                        </div>
+                     </div>
+                     -->
+                     <div class="row mb-3">
+                        <label for="select-image" class="col-sm-2 col-form-label">Imagen</label>
+                        <div class="col-sm-10">
+                           <select id="select-image" class="form-select" aria-label="Default select example">
+                              <option selected="">Selecciona una imagen</option>
+                              <option value="1">Cirros</option>
+                              <option value="2">Ubuntu</option>
+                              <option value="3">Windows</option>
+                           </select>
+                        </div>
+                     </div>
+                     <div class="row mb-3">
+                        <label for="select-resource" class="col-sm-2 col-form-label">Capacidad</label>
+                        <div class="col-sm-10">
+                           <select id="select-resource" class="form-select" aria-label="Default select example">
+                              <option selected="">Selecciona los recursos</option>
+                              <option value="1">1VCPU - 2GBRAM - 1GBSTRG</option>
+                              <option value="2">2VCPU - 2GBRAM - 2GBSTRG</option>
+                              <option value="3">4VCPU - 4GBRAM - 4GBSTRG</option>
+                           </select>
+                        </div>
+                     </div>
+                        
+                  
+                     <div class="row mb-3">
+                        <div class="form-button">
+                           <button type="submit" class="btn btn-primary">Enviar</button>
+                        </div>
+                     </div>
+                     
+                  </form>
+               </div>  
+            </div>
+         </div>
+      </div>
+   </section>         
+
+
+   {% endblock content %}
+</body>
+
+</html>

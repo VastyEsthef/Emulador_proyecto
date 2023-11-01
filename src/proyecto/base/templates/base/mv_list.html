@@ -1,4 +1,7 @@
-{% extends 'base/base.html' %}
+<!--
+
+-->
+
 
 <!DOCTYPE html>
 <html lang="en">
@@ -22,7 +25,7 @@
    <a href="{% url 'login' %}">Ingresar</a>
    {% endif %}
    <hr>
-
+   <!-- 
    {% block content %}
       
       <div class="pagetitle">
@@ -105,9 +108,9 @@
 
 
 
+   {% endblock content %}
 
-
-      <!--   -->
+   -->
 
 
 
@@ -129,14 +132,14 @@
             </td>
          </tr>
          {% empty %}
-         <h3>No hay Elementos en esta lista</h3>
+         <h3>No hay Elementos en esta listaaa</h3>
 
          {% endfor %}
 
       </table>
    </div>
 
-   {% endblock content %}
+   
 </body>
 
 </html>

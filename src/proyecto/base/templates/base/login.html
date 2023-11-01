@@ -7,13 +7,23 @@
    <meta name="viewport" content="width=device-width, initial-scale=1.0">
    <title>Pantalla de Logueo</title>
 
-   <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+   <link rel="stylesheet" type="text/css" href="{% static 'css/bootstrap/bootstrap.min.css' %}">
+   
    <style>
       /* Estilos personalizados */
-      .centered-input {
-          display: flex;
-          justify-content: center;
+      .container.login-container{
+         
+         margin-top: 210px;
+         padding: 0px 200px;
       }
+      .card-body {
+         margin-top: 20px;
+         padding: 0px 40px;
+      }
+      .text-center {
+         margin-top: 10px;
+      }
+      
   </style>
 </head>
 
@@ -30,20 +40,33 @@
                      {% csrf_token %}
                      <!-- {{ form.as_p }} -->
                      <div class="text-center">
-                        <div class="form-group">
+                        <!--
+                           <div class="form-group">
                            <label for="{{ form.username.id_for_label }}" class="form-label">Usuario:</label>
                            <div class="centered-input">
                               {{ form.username }}
                            </div>
-                           
                         </div>
+
                         <div class="form-group" class="mb-3">
                            <label for="{{ form.password.id_for_label }}" class="form-label">Contraseña:</label>
                            <div class="centered-input">
                               {{ form.password }}
                            </div>
-                           
                         </div>
+                        -->
+
+                        <div class="form-floating">
+                           <input class="form-control" id="floatingInput" >
+                           <label for="floatingInput">Usuario</label>
+                         </div>
+
+                        <div class="form-floating">
+                           <input type="password" class="form-control" id="floatingPassword">
+                           <label for="floatingPassword">Contraseña</label>
+                        </div>
+
+                        
                      </div>
                      <div class="text-center">
                         <button type="submit" class="btn btn-primary btn-block mx-auto">Iniciar Sesión</button>
