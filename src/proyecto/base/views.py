@@ -7,17 +7,40 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.auth.views import LoginView, LogoutView
 from django.urls import reverse_lazy
 from .models import Ctopology, Cmaquinas_virtuales, Cvirtual_machine
+#---
+from openstack_sdk import password_authentication_with_unscoped_authorization, password_authentication_with_scoped_authorization
 
-#--------------------- Landing Page ----------------------
+
+# Landing Page
 
 def landing_page(request):
    return render(request, 'base/landing_page.html')
    
 
 
+# AUTHENTICATION SECTION
+def get_token_for_admin():
+    r = password_authentication_with_scoped_authorization(KEYSTONE_ENDPOINT, ADMIN_USER_DOMAIN_NAME, ADMIN_USERNAME, ADMIN_USER_PASSWORD, DOMAIN_ID, ADMIN_PROJECT_NAME)
+    if r.status_code == 201:
+        return r.headers['X-Subject-Token']
+    else:
+        return None
+
+
+def login(username, password):
+    r = password_authentication_with_unscoped_authorization(KEYSTONE_ENDPOINT, DOMAIN_ID, username, password)
+    if r.status_code == 201:
+        u = r.json()['token']['user']
+        user_objetct = User(u['id'],u['name'])
+        return user_objetct
+    else:
+        return None
+
+
+
 #--------------------- Login / Registro ----------------------
 
-class logueo(LoginView):
+"""class logueo(LoginView):
    template_name = 'base/login.html'
    fields = '__all__'
    redirect_authenticated_user = True
@@ -36,16 +59,16 @@ class registro(FormView):
       usuario = form.save()
       return usuario
       #Para hacer que luego del registro mantenga iniciada la sesión
-      """if usuario is not None:
-         login(self.request, usuario)
-      return super(registro, self).form_valid(form)"""
+      #if usuario is not None:
+      #   login(self.request, usuario)
+      #return super(registro, self).form_valid(form)
 
    #Funcion para no mostrar la pagina de registro a un usuario ya logueado
    def get(self, *args, **kwargs):
       if self.request.user.is_authenticated:
          return redirect('mvs')
       return super(registro,self).get(*args, **kwargs)
-
+"""
 
 #--------------------- Topos ----------------------
 

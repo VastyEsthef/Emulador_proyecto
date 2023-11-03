@@ -2,7 +2,8 @@ from django.urls import path
 from django.contrib.auth.views import LogoutView
 from . import views
 #from .views import landing_page
-from .views import lista_mvs, crear_mv, eliminar_mv, logueo, registro
+from .views import lista_mvs, crear_mv, eliminar_mv
+#from .views import logueo, registro
 from .views import list_topologies, create_topology, detail_topology, delete_topology
 from .views import list_vms, create_vm, link_vm
 
@@ -11,9 +12,15 @@ urlpatterns = [
    path('',views.landing_page, name='landing-page'),
    
    #-------------- Login / Registro ---------------
-   path('login/', logueo.as_view(), name='login'),
-   path('logout/', LogoutView.as_view(next_page = 'landing-page'), name='logout'),
-   path('registro/', registro.as_view(), name='registro'),
+   path('login/', views.login, name='login'),
+   #path('logout/', LogoutView.as_view(next_page = 'landing-page'), name='logout'),
+   #path('registro/', registro.as_view(), name='registro'),
+   
+   
+   #-------------- Login / Registro (DEFAULT) ---------------
+   #path('login/', logueo.as_view(), name='login'),
+   #path('logout/', LogoutView.as_view(next_page = 'landing-page'), name='logout'),
+   #path('registro/', registro.as_view(), name='registro'),
    
    #-------------- Topo ---------------
    path('list-topo/',list_topologies.as_view(), name='topologies'),
