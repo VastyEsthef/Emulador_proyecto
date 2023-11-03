@@ -12,7 +12,7 @@ urlpatterns = [
    path('',views.landing_page, name='landing-page'),
    
    #-------------- Login / Registro ---------------
-   path('login/', views.login, name='login'),
+   #path('login/', views.login, name='login'),
    #path('logout/', LogoutView.as_view(next_page = 'landing-page'), name='logout'),
    #path('registro/', registro.as_view(), name='registro'),
    

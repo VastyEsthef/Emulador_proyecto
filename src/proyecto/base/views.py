@@ -8,7 +8,7 @@ from django.contrib.auth.views import LoginView, LogoutView
 from django.urls import reverse_lazy
 from .models import Ctopology, Cmaquinas_virtuales, Cvirtual_machine
 #---
-from openstack_sdk import password_authentication_with_unscoped_authorization, password_authentication_with_scoped_authorization
+#from openstack_sdk import password_authentication_with_unscoped_authorization, password_authentication_with_scoped_authorization
 
 
 # Landing Page
@@ -19,7 +19,7 @@ def landing_page(request):
 
 
 # AUTHENTICATION SECTION
-def get_token_for_admin():
+"""def get_token_for_admin():
     r = password_authentication_with_scoped_authorization(KEYSTONE_ENDPOINT, ADMIN_USER_DOMAIN_NAME, ADMIN_USERNAME, ADMIN_USER_PASSWORD, DOMAIN_ID, ADMIN_PROJECT_NAME)
     if r.status_code == 201:
         return r.headers['X-Subject-Token']
@@ -35,7 +35,7 @@ def login(username, password):
         return user_objetct
     else:
         return None
-
+"""
 
 
 #--------------------- Login / Registro ----------------------
